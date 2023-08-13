@@ -1,11 +1,11 @@
 import {
   getVideosRepo,
   getVideosByIdRepo,
+  getVideosByTitleRepo,
 } from "../../repositories/videos/videos.js";
 
 export const getVideosUsecase = async () => {
   const videos = await getVideosRepo();
-  console.log(videos);
 
   if (!videos || videos.length == 0) {
     return null;
@@ -43,4 +43,24 @@ export const getVideosByIdUsecase = async (videoID) => {
   return newVideos;
 };
 
-// ADD GET SPECIFIC VIDEO
+export const getVideoByTitleUsecase = async (title) => {
+  const videos = await getVideosByTitleRepo(title);
+
+  if (!videos || videos.length == 0) {
+    return null;
+  }
+
+  let newVideos = [];
+
+  videos.forEach((p, i = 0) => {
+    newVideos[i] = {
+      videoID: p.videoID,
+      title: p.title,
+      urlThumbnail: p.urlThumbnail,
+      urlVideo: p.urlVideo,
+    };
+    i++;
+  });
+
+  return newVideos;
+};

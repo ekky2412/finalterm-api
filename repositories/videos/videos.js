@@ -17,3 +17,12 @@ export const getVideosByIdRepo = async (videoID) => {
     return err;
   }
 };
+
+export const getVideosByTitleRepo = async (title) => {
+  try {
+    const videos = await Video.find({ title: title });
+    return videos;
+  } catch (err) {
+    return err;
+  }
+};

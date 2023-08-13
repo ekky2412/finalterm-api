@@ -31,6 +31,7 @@ export const getVideoById = async (req, res) => {
 
 export const getSearchVideo = async (req, res) => {
   const { title } = req.params;
+  console.log(title);
   const videos = await getVideoByTitleUsecase(title);
 
   if (!videos) {

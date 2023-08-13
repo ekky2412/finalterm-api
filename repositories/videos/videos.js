@@ -11,7 +11,7 @@ export const getVideosRepo = async () => {
 
 export const getVideosByIdRepo = async (videoID) => {
   try {
-    const videos = await Video.find({ videoID: videoID });
+    const videos = await Video.find({ videoID: `/.*${videoID}.*/` });
     return videos;
   } catch (err) {
     return err;

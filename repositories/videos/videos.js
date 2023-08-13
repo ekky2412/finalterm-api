@@ -20,7 +20,7 @@ export const getVideosByIdRepo = async (videoID) => {
 
 export const getVideosByTitleRepo = async (title) => {
   try {
-    const videos = await Video.find({ title: { $regex: title }, $option: "i" });
+    const videos = await Video.find({ title: new RegExp(title, "i") });
     return videos;
   } catch (err) {
     return err;

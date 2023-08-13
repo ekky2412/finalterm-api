@@ -5,6 +5,7 @@ import {
 
 export const getVideosUsecase = async () => {
   const videos = await getVideosRepo();
+  console.log(videos);
 
   if (!videos || videos.length == 0) {
     return null;

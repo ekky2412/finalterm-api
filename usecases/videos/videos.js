@@ -45,6 +45,7 @@ export const getVideosByIdUsecase = async (videoID) => {
 
 export const getVideoByTitleUsecase = async (title) => {
   const videos = await getVideosByTitleRepo(title);
+  console.log(videos);
 
   if (!videos || videos.length == 0) {
     return null;
